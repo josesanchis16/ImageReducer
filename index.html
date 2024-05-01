@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Reducer</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <h1 class="title">Image Reducer</h1>
+    <div class="container">
+        <form class="file-form" id="dropSection">
+            <input id="fileInput" type="file" multiple accept="image/*" onchange="app.actions.handleFiles(this.files)">
+            <label class="drop-content" for="fileInput">
+                Drops file to attach, or click and select
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="none" viewBox="0 0 24 20"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+            </label>
+        </form>
+        <div id="uploadedImage"></div>
+        <div id="actionContainer">
+            <button id="clearAllBtn" onclick="app.actions.clearAll()">Clear</button>
+            <button id="executeBtn" onclick="convert()">Reduce</button>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="scripts/main.js"></script>
+<script>
+    function convert() {
+        const { files } = document.getElementById('fileInput');
+        console.log({ files });
+        const form_data = new FormData();
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            form_data.append('file' + i, file);
+        }
+
+        fetch("converter.php", {
+            method: "POST",
+            body: form_data
+        }).then(function (response) {
+            return response.json();
+        }).then(function (responseData) {
+            alert('Images converted ✔')
+        });
+    }
+</script>
+
+</html>

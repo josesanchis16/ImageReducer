@@ -1,0 +1,211 @@
+:root {
+  --clouds: #ecf0f1;
+  --silver: #bdc3c7;
+  --concrete: #95a5a6;
+  --asbestos: #7f8c8d;
+
+  --wetAsphalt: #34495e;
+  --midnightBlue: #2c3e50;
+
+  --alizarin: #e74c3c;
+  --pomegranate: #c0392b;
+
+  --emerald: #2ecc71;
+  --nephritis: #27ae60;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--silver);
+  border-radius: 0.75rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--wetAsphalt);
+  border-radius: 0.75rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--midnightBlue);
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background: var(--clouds);
+}
+
+.file-form {
+  position: relative;
+  padding: 2.5rem;
+  border: 2px dashed var(--silver);
+}
+
+.file-form:hover {
+  border-color: var(--asbestos);
+}
+
+.file-form.highlight {
+  border-color: var(--asbestos);
+}
+
+.drop-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 2rem;
+  font-weight: bold;
+  color: var(--wetAsphalt);
+}
+
+#fileInput {
+  display: none;
+}
+
+#uploadedImage {
+  margin-top: 1.25rem;
+  max-height: 750px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.d-none {
+  display: none !important;
+}
+
+#actionContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.25rem 0px;
+  gap: 10px;
+}
+
+#actionContainer button {
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--clouds);
+  padding: 0.75rem;
+}
+
+#executeBtn {
+  background-color: var(--wetAsphalt);
+}
+#executeBtn:hover {
+  background-color: var(--midnightBlue);
+}
+#executeBtn:active {
+  background-color: var(--midnightBlue);
+  transform: scale(1.1);
+}
+
+#clearAllBtn {
+  color: var(--clouds);
+  background-color: var(--alizarin);
+}
+
+#clearAllBtn:active {
+  background-color: var(--pomegranate);
+  transform: scale(1.1);
+}
+
+#clearAllBtn:hover {
+  background-color: var(--pomegranate);
+}
+
+.image-content {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed var(--silver);
+  border-radius: 0.25rem;
+  margin: 0.7rem;
+  padding: 0.25rem;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  transition: 1s;
+  width: 150px;
+}
+
+.image-wrapper:hover img {
+  filter: blur(2px);
+}
+
+.image-wrapper span {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: #454545;
+  padding: 1rem;
+  border-radius: 50%;
+  line-height: 1rem;
+}
+
+.image-wrapper:hover span {
+  display: block;
+}
+
+.download-button {
+  background-color: var(--emerald);
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  animation: 1s;
+  color: var(--clouds);
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.download-button:hover {
+  background-color: var(--nephritis);
+  color: var(--clouds);
+}
+
+.download-button:active {
+  transform: scale(1.1);
+}
+
+.title {
+  text-align: center;
+  margin-top: 4rem;
+  color: var(--wetAsphalt);
+}
+
+@media only screen and (max-width: 620px) {
+  #actionContainer .execute-section {
+    width: 50%;
+  }
+  #actionContainer button {
+    margin: 0.25rem;
+  }
+  #uploadedImage {
+    justify-content: center;
+  }
+}
